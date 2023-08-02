@@ -1,8 +1,13 @@
-echo off
-echo %date%, %time% >> log.txt
+@echo off
+set LogFile=log.txt
 
-echo Current date/time is %date%, %time%.
+REM Verifica se o arquivo de log existe
+if not exist %LogFile% (
+    echo Criando o arquivo de log...
+    echo Log gerado em: %date% %time% > %LogFile%
+) else (
+    echo Adicionando entrada de log...
+    echo Log gerado em: %date% %time% >> %LogFile%
+)
 
-@pause
-
-exit
+echo Log registrado com sucesso!
