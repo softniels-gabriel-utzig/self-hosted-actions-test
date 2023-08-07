@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{0A370874-53E7-4B3F-BB99-1056801DDE7F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DogApi.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Dogs.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DogApi">
+        <MSBuild Projects="DogApi.dproj"/>
+    </Target>
+    <Target Name="DogApi:Clean">
+        <MSBuild Projects="DogApi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DogApi:Make">
+        <MSBuild Projects="DogApi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Dogs">
+        <MSBuild Projects="Dogs.dproj"/>
+    </Target>
+    <Target Name="Dogs:Clean">
+        <MSBuild Projects="Dogs.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Dogs:Make">
+        <MSBuild Projects="Dogs.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DogApi;Dogs"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DogApi:Clean;Dogs:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DogApi:Make;Dogs:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
