@@ -15,4 +15,4 @@ jobs:
       
     - name: Run .bat file
       run: |
-        ./test.bat
+        ./compile.bat
