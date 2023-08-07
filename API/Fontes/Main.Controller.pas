@@ -18,6 +18,11 @@ type
     [MVCPath('/ping')]
     [MVCHTTPMethod([httpGET])]
     procedure Ping;
+
+    [MVCPath('/pong')]
+    [MVCHTTPMethod([httpGET])]
+    procedure Pong;
+
   end;
 
 implementation
@@ -35,6 +40,11 @@ end;
 procedure TMainController.Ping;
 begin
   Render(HTTP_STATUS.OK, '{"message": "au au"}');
+end;
+
+procedure TMainController.Pong;
+begin
+  Render(HTTP_STATUS.OK, '{"message": "wifenlooof"}');
 end;
 
 end.
